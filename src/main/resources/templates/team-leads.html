@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Team Leads</title>
+</head>
+
+	<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+	crossorigin="anonymous">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap/min.js"></script>
+	<link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+	<link rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.13.0/css/all.css"
+      integrity="sha384-Bfad6CLCknfcloXFOyFnlgtENryhrpZCe29RTifKEixXQZ38WheV+i/6YWSzkz3V"
+      crossorigin="anonymous">
+      <link rel="stylesheet" href="dist/simple-notify.min.css" />
+<script src="dist/simple-notify.min.js"></script>
+
+<style>
+#logout {
+float:right;
+margin-right:3%;
+margin-top:1%;
+margin-bottom:1%;
+}
+</style>
+
+<body>
+<form th:action="@{/logout}" method="post">
+        <input id="logout" type="submit" class="btn btn-info" value="Logout" />
+    </form>
+   
+<div class="card" style="width: 18rem;"th:each="list:${listTeamLead}">
+  <div class="card-body" >
+  
+    <h5 class="card-title" th:text="${list.leadName}"></h5>
+    <h6 class="card-subtitle mb-2 text-muted"th:text="${list.departmentsList}">Card subtitle</h6>
+    <h6 class="card-subtitle mb-2 text-muted"th:text="${list.teamsList}">Card subtitle</h6>
+  </div>
+  
+</div>
+<br>
+<div>
+     <h3>List of Team Lead Information</h3>
+     
+     
+     <table class="table">
+  <thead class="thead-dark">
+    <tr>
+      
+      <th scope="col">Employee Name</th>
+      <th scope="col">Shift Schedule</th>
+      <th scope="col">Group / Team</th>
+       <th scope="col">Work Type</th>
+        <th scope="col">PTO</th>
+        <th scope="col">Holiday OFF</th>
+        <th scope="col">Location</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr th:each="list:${listTeamLead}">
+    <td th:text="${list.employeeList.firstName + ' ' + list.employeeList.lastName}"/>
+    <td th:text="${list.employeeList.shifts}"/>
+    <td th:text="${list.employeeList.teamName} + '/'+'TEAM '+${list.employeeList.hybridSchedInfo.team} "/>
+    <td th:text="${list.employeeList.workType.workType}"/>
+    <td th:text="${list.employeeList.pto.ptoInfo}"/>
+    <td th:text="${list.employeeList.firstName}"/>
+    <td th:text="${list.employeeList.address}"/>
+   <td><a th:href="@{'/showNewUpdateEmployeeForm/' + ${list.employeeList.employee_id}}" class="btn btn-success">Edit</a></td>
+   
+    </tr>
+  </tbody>
+</table>
+   </div>
+  
+</body>
+</html>

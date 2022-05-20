@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Master Page</title>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+	crossorigin="anonymous">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap/min.js"></script>
+	<link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+	<link rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.13.0/css/all.css"
+      integrity="sha384-Bfad6CLCknfcloXFOyFnlgtENryhrpZCe29RTifKEixXQZ38WheV+i/6YWSzkz3V"
+      crossorigin="anonymous">
+
+
+<style>
+.center {
+  margin: auto;
+  width: 60%;
+  border: 3px solid gray;
+  padding: 10px;
+  text-align: center;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  	transform: translate(-50%, -50%);
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color:ghostwhite;
+}
+
+.topnav {
+  overflow: hidden;
+  background-color: white;
+  position:fixed;
+  top: 0;
+  width: 100%;
+}
+
+.topnav a {
+  float: right;
+  color: black;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.topnav a.active {
+  background-color: #04AA6D;
+  color: white;
+}
+
+img
+{
+position:relative;
+margin:5px;
+}
+
+.hbtn {
+      position: relative;
+      box-sizing: border-box;
+      display: inline-block;
+      overflow: hidden;
+      padding: 8px 20px;
+      margin: 0px 3px 6px;
+      text-align: center;
+      border: 2px solid red;
+      text-decoration: none;
+      color: rgb(255, 255, 255);
+      white-space: nowrap;
+      z-index: 0;
+      color:black;
+      border-radius:10px;
+} 
+ 
+
+.hbtn i {
+      padding-right: 8px;
+      text-decoration: none;
+} 
+ 
+
+.hb-fill-right-bg::before {
+      position: absolute;
+      content: "";
+      background: red;
+      transition-duration: .75s;
+      z-index: -1;
+      inset: 0px auto auto 0px;
+      width: 0px;
+      height: 100%;
+      opacity: 1;
+      text-decoration: none;
+} 
+ 
+
+.hb-fill-right-bg:hover::before {
+      width: 100%;
+      height: 100%;
+      opacity: 1;
+      text-decoration: none;
+} 
+ 
+
+.hb-fill-right-bg:hover {
+      text-decoration: none;
+      background:red;
+      transition: all .75s ease .75s;
+      color:white;
+} 
+
+</style>
+
+
+<style>
+#logout {
+float:right;
+margin-right:3%;
+margin-top:1%;
+margin-bottom:1%;
+}
+</style>
+
+</head>
+<body>
+
+<div class="wrapper">
+
+ <form th:action="@{/logout}" method="post">
+        <input id="logout" type="submit" class="btn btn-info" value="Logout" />
+    </form>
+   </div> 
+  <!-- <a href="/teamLead">List of Team Lead</a>-->
+  
+
+
+<h1>
+Master List
+</h1>
+
+<div>
+         
+     <table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Department</th>
+      
+      <th scope="col">Employee Name</th>
+      <th scope="col">Shift Schedule</th>
+      <th scope="col">Group / Team</th>
+      <th scope="col">Work Type</th>
+      <th scope="col">On PTO</th>
+       <th scope="col">Holiday Off</th>
+      <th scope="col">Remarks</th>
+      <th scope="col">Location</th>
+    </tr>
+  </thead>
+  
+  <tbody>
+   <tr th:each="list:${listEmployee}">
+   <td th:text="${list.departments}"/>
+   <td th:text="${list.firstName}"/>
+   <td th:text="${list.shifts.shiftScheds}"/>
+   <td th:text="${list.teamName}"/>
+   <td th:text="${list.workType.workType}"/>
+   <td th:text="${list.pto.ptoInfo}"/>
+   <td>Sample</td>
+   <td>Sample</td>
+   <td th:text="${list.address}"/>
+   </tr> 
+  </tbody>
+    
+  
+</table>
+
+   </div>
+
+
+<div style="margin-left:40px;margin-top:40px;">	
+		<h1>Actions</h1>
+	
+	
+	     <a href="/showNewAddForm" class="btn btn-success">Add</a>
+	     <a href="/showNewUpdateForm" class="btn btn-warning">Update</a>
+	     <a href="/showNewDeleteForm" class="btn btn-danger">Delete</a>
+	     
+   
+   </div>
+
+</body>
+</html>

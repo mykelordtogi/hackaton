@@ -1,0 +1,22 @@
+package com.example.demo.enums;
+
+public enum HybridSchedInfoEnum {
+//"WILL HAVE TO WORK IN THE OFFICE EVERY MONDAY-TUESDAY AND 1ST AND 3RD WEDNESDAY OF\r\n"
+//		+ "THE MONTH/WEEK CYCLE."
+	A("s"),
+//	"WILL HAVE TO WORK IN THE OFFICE EVERY THURSDAY-FRIDAY AND 2ND AND 4TH WEDNESDAY OF\r\n"
+//			+ "THE MONTH/WEEK CYCLE."	
+	B("s"),
+//	"WILL HAVE TO WORK IN THE OFFICE DAILY. THEY ARE THE ONES CONSIDERED TO BE ON A FULL\r\n"
+//			+ "RTO."
+	C(""),
+//	"ARE EMPLOYEES WHO WERE GIVEN PRIOR APPROVAL TO CONTINUE TELECOMMUTING DUE TO\r\n"
+//			+ "UNCOMMON REASONS/CONCERNS."
+	D("");
+	
+	String value;
+	
+	HybridSchedInfoEnum(String value) {
+        this.value = value;
+    }
+}
